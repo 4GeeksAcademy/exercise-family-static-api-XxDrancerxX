@@ -49,13 +49,13 @@ def get_member(member_id):
 
 
 
-@app.route('/members', methods=['POST'])
+@app.route('/member', methods=['POST'])
 def add_member():
     body = request.json
     members = jackson_family.add_member(body)
     print(body,"this is the body:")
     # this is how you can use the Family datastructure by calling its methods
-    return jsonify("members",body), 200
+    return jsonify("member added:",body), 200
 
 
 @app.route('/member/<int:member_id>', methods=['DELETE'])
@@ -77,3 +77,4 @@ def delete_member(member_id):
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=True)
+
